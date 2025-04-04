@@ -1,5 +1,32 @@
 # AF-Cluster
 
+## Installation
+```bash
+conda create -n af_cluster python=3.11
+conda activate af_cluster
+pip install -U "jax[cuda12]"
+export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:
+git clone https://github.com/google-deepmind/alphafold.git
+cd alphafold
+pip install .
+pip install polyleven scikit-learn
+pip install biopython==1.78
+```
+
+## Run
+```bash
+# MSA clustering
+python scripts/ClusterMSA.py 1ake -i examples/1ake/A.a3m -o 1ake_msa_clusters
+# Alphafold2 prediction
+python run_inference.py 1ake_msa_clusters 1ake_outputs/ 1ake
+```
+
+## Troubleshooting
+```bash
+ImportError: cannot import name 'SCOPData' from 'Bio.Data
+pip install biopython==1.78
+```
+
 Code and data corresponding to Wayment-Steele*, Ojoawo*, ... Ovchinnikov, Colwell, Kern (2023) "Predicting multiple conformations via sequence clustering with AlphaFold2" *Nature*. [link](https://www.nature.com/articles/s41586-023-06832-9) 
 
 [original bioRxiv](https://www.biorxiv.org/content/10.1101/2022.10.17.512570v1)
