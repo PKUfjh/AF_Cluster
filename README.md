@@ -19,6 +19,10 @@ pip install biopython==1.78
 python scripts/ClusterMSA.py 1ake -i examples/1ake/A.a3m -o 1ake_msa_clusters
 # Alphafold2 prediction
 python run_inference.py 1ake_msa_clusters 1ake_outputs/ 1ake
+# MSA clustering for KaiB
+python scripts/ClusterMSA.py KaiB -i KaiB_msas/A.a3m -o KaiB_msa_clusters
+# Alphafold2 prediction for KaiB
+python run_inference.py KaiB_msa_clusters KaiB_inference/ KaiB
 ```
 
 ## Troubleshooting
